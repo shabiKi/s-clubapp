@@ -1,21 +1,21 @@
 {
-  "name": "main-app_front_end",
+  "name": "user_auth_backend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
-    "bootstrap": "^4.5.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.24",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
-    "react-responsive-carousel": "^3.2.9",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1",
-    "reactstrap": "^8.5.1"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +39,7 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "auth_server.js",
   "devDependencies": {},
   "author": "Shoaib",
   "license": "ISC"
