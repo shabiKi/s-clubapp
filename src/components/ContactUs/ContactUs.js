@@ -4,26 +4,21 @@ import './ContactUs.css';
 
 class Contactus extends Component {
     state = {
-        firstname: '',
-        lastname: '',
+        name: '',
         email: '',
-        firstnameError: '',
+        nameError: '',
         emailError: '',
         messageError: '',
         sent: false
     }
 
     // handle inputs
-    handleFirstName = (e) => {
+    handleName = (e) => {
         this.setState({
-            firstname: e.target.value
+            name: e.target.value
         })
     }
-    handleLastName = (e) => {
-        this.setState({
-            lastname: e.target.value
-        })
-    }
+  
     handleEmail = (e) => {
         this.setState({
             email: e.target.value
@@ -37,9 +32,9 @@ class Contactus extends Component {
     
     valid() { 
       
-        if (!this.state.firstname) {
+        if (!this.state.name) {
             this.setState(
-                { firstnameError: "Please fill in the name field." }
+                { nameError: "Please fill in the name field." }
             )
         }   
         if (!this.state.email.includes("@")) {
@@ -60,8 +55,7 @@ class Contactus extends Component {
         if (isValid) {
             
             data = {
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
+                name: this.state.name,
                 email: this.state.email,
                 message: this.state.message
             }
@@ -80,9 +74,8 @@ class Contactus extends Component {
         // reseting initial data
         resetForm = () => {
             this.setState({
-                firstname: '',
-                firstnameError: '',
-                lastname: '',
+                name: '',
+                nameError: '',
                 email: '',
                 emailError: '',
                 message: '',
@@ -102,32 +95,25 @@ class Contactus extends Component {
             <div className=" cu-container"><h2>Contact Us</h2>
                 <form onSubmit={this.formSubmit}>
                     <div className="singleItem">
-                        <label htmlFor="firstname">First Name</label>
-                        <input type="text" name="firstname" className="firstname" placeholder="First Name"
-                            value={this.state.firstname}
-                                onChange={this.handleFirstName}
+                        <label htmlFor="name">Name</label>
+                        <input type="text" name="name" className="name" placeholder="Your Name"
+                            value={this.state.name}
+                                onChange={this.handleName}
                         />
                     </div>
-                        <div style={{ fontSize: 12, color: "white" }}>{this.state.firstnameError}</div>
+                        <div style={{ fontSize: 12, color: "white" }}>{this.state.nameError}</div>
 
-                    <div className="singleItem">
-                        <label htmlFor="lastname">Last Name</label>
-                        <input type="text" name="lastname" className="lastname" placeholder="Last Name"
-                        value={this.state.lastname}
-                            onChange={this.handleLastName}
-                        />
-                    </div>
 
                     <div className="singleItem">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" className="name" placeholder="Email" 
+                        <input type="text" name="email" className="name" placeholder="Your Email" 
                         value={this.state.email}
                             onChange={this.handleEmail}/>
                     </div>
                     <div style={{ fontSize: 12, color: "white" }}>{this.state.emailError}</div>
                     <div className="textArea singleItem">
                         <label htmlFor="message">Message</label>
-                        <textarea name="message" id="" cols="30" rows="5" placeholder="Message"
+                        <textarea name="message" id="" cols="30" rows="5" placeholder="Type your message here .."
                         value={this.state.message}
                             onChange={this.handleMessage}
                             ></textarea>

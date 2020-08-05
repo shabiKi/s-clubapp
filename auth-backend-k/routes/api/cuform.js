@@ -1,20 +1,22 @@
 const express = require('express');
+const router = express.Router();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-const dotenv = require('dotenv').config();
-
+const auth=require('../../middleware/auth');
 const app = express();
+
+const Msg = require('../../models/Msg');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get('../../src/components/ContactUs', () => { 
+router.get('../../../src/components/ContactUs', () => { 
     resizeBy.send('Welcom to my form')
 })
 
-app.post('/api/form', (req, res) => { 
+router.post('', (req, res) => { 
     let data = req.body
     let smtpTransport = nodemailer.createTransport({
         service: 'Gmail',
@@ -55,7 +57,4 @@ app.post('/api/form', (req, res) => {
     smtpTransport.close();
 })
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => { 
-    console.log(`server starting at port ${PORT}`);
-})
+module.exports = router;
