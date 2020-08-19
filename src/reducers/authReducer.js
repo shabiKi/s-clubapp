@@ -1,4 +1,5 @@
 import {
+  //  SET_CURRENT_USER,
     USER_LOADED,
     USER_LOADING,
     AUTH_ERROR,
@@ -9,16 +10,26 @@ import {
     REGISTER_FAIL
   } from '../actions/types';
 
+// const isEmpty = require("is-empty");
+  
   const initialState = {
     token: localStorage.getItem('token'), // token which is comes from localstorage if there is one set 
-    isAuthenticated: null, 
+    //isAuthenticated: null,
+    isAuthenticated: localStorage.getItem('token') ? true:false,
     isLoading: false,
     isLoggedIn: false,
+    isRegistered: false,
     user: null
   };
 
   export default function(state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
+      // case SET_CURRENT_USER:
+      // return {
+      //   ...state,
+      //   isAuthenticated: !isEmpty(action.payload),
+      //   user: action.payload
+      // };
       case USER_LOADING:
         return {
           ...state,
@@ -29,7 +40,6 @@ import {
           ...state,
           isAuthenticated: true, // auth is true because we went and validated on backend got the user ans set that true
           isLoading: false,// set false because user is now loaded
-          
           user: action.payload // we send th user as the payload
         };
       case LOGIN_SUCCESS:

@@ -20,8 +20,8 @@ app.post('/api/form', (req, res) => {
         service: 'Gmail',
         port: 465,
         auth: {
-            user: process.env.EMAIL_USERNAME,
-            pass: process.env.EMAIL_PASSWORD
+            user: process.env.EMAIL_USERNAME || 'ma9558454@gmail.com',
+            pass: process.env.EMAIL_PASSWORD || 'Abcde12345*'
         }
     });
 
