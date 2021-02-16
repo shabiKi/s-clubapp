@@ -8,7 +8,8 @@ import Backdrop from './components/Backdrop/Backdrop';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
 // import { loadUser } from './actions/authActions';
 
 import Home from './components/Home/Home';
@@ -57,6 +58,7 @@ class App extends Component {
     return (
       <>
         <Provider store={store}>
+          <PersistGate persistor={persistor}>
           <div className="App">
             <Navbar drawerClickHandler={this.drawerToggleClickHandler} />
             <SideDrawer show={this.state.sideDrawerOpen} />
@@ -79,6 +81,7 @@ class App extends Component {
             </main>
             <footer> <Footer /> </footer>
           </div>
+        </PersistGate>
         </Provider>
       </>
     );

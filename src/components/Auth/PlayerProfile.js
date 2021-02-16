@@ -8,27 +8,15 @@ import PropTypes from 'prop-types';
 
 
 class PlayerProfile extends Component {
-    // constructor(props) { 
-    //     super(props)
-    //     const token = localStorage.getItem("token")
-
-    //     let isLoggedIn = true
-    //     if (token == null) { 
-    //         isLoggedIn=false
-    //     }
-    //     this.state = {
-    //         isLoggedIn
-    //     }
-    // }
+ 
   static propTypes={
-    auth:PropTypes.object.isRequired
-
+      auth: PropTypes.object.isRequired
 } 
     render(){
-      const {isLoggedIn, user} = this.props.auth;
+      const {isAuthenticated, user} = this.props.auth;
     return (
       <>
-        {isLoggedIn?(
+        {isAuthenticated ?(
           <div>
       <div className="p-container">
         <div className="content">
@@ -37,8 +25,8 @@ class PlayerProfile extends Component {
             <div className="column1 col-lg-5 col-sm-12">
               <div className="player-img">
                 <img className="img" src="https://img-cdn.hltv.org/playerbodyshot/RkBcD0hXW4RB_JMLJD9Q8d.png?ixlib=java-2.1.0&w=400&s=004587eea44ffabe561b6be6a264d556" alt="profile_image"/>
-                  <h3 className="name">{user.name}</h3>
-                <p className="name2">{user.email}</p>
+                    <h3 className="name">{user.name}</h3>
+                    <p className="name2">{user.email}</p>
                 <ul className="social-icons"> 
                     <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                       <i className="fa fa-facebook-square" aria-hidden="true"></i></a>
@@ -145,7 +133,7 @@ class PlayerProfile extends Component {
                           </thead>
                           <tbody>
                             <tr>
-                                <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">Test</h4></div></td>
+                                <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">Test</h4></div></td>
                                 <td>8</td>
                                 <td>8</td>
                                 <td>0</td>
@@ -160,7 +148,7 @@ class PlayerProfile extends Component {
                                 <td>86.63</td>
                             </tr>
                             <tr>
-                              <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">ODI</h4></div></td>
+                              <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">ODI</h4></div></td>
                               <td>8</td>
                                 <td>8</td>
                                 <td>0</td>
@@ -175,7 +163,7 @@ class PlayerProfile extends Component {
                                 <td>86.63</td>
                             </tr>
                             <tr>
-                              <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">T20I</h4></div></td>
+                              <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">T20I</h4></div></td>
                               <td>8</td>
                                 <td>8</td>
                                 <td>0</td>
@@ -216,7 +204,7 @@ class PlayerProfile extends Component {
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">Test</h4></div></td>
+                                    <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">Test</h4></div></td>
                                     <td>8</td>
                                     <td>5</td>
                                     <td>295</td>
@@ -230,7 +218,7 @@ class PlayerProfile extends Component {
                                     <td>3.86</td>
                                   </tr>
                                   <tr>
-                                    <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">ODI</h4></div></td>
+                                    <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">ODI</h4></div></td>
                                     <td>8</td>
                                     <td>5</td>
                                     <td>295</td>
@@ -244,7 +232,7 @@ class PlayerProfile extends Component {
                                     <td>3.86</td>
                                   </tr>
                                   <tr>
-                                    <td><div className="player-stats__table-match-type"><h4 class="player-stats__table-match-text">T20I</h4></div></td>
+                                    <td><div className="player-stats__table-match-type"><h4 className="player-stats__table-match-text">T20I</h4></div></td>
                                     <td>8</td>
                                     <td>5</td>
                                     <td>295</td>

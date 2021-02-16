@@ -10,26 +10,26 @@ import Three from "../../assets/images/three.jpg";
 class Gallary extends React.Component {
   render() {
     return (
-      <div>
+      <div className="CarouselBox">
         <h2>Our Image Gallery</h2>
         <Carousel autoPlay interval="5000" transitionTime="5000">
-          <div>
+          <div className="galImg">
             <img src={Hero} alt=""></img>
             <p className="legend">Our Stadium</p>
           </div>
-          <div>
+          <div className="galImg">
             <img src={Ground} alt=""></img>
             <p className="legend">Our Training ground</p>
           </div>
-          <div>
+          <div className="galImg">
             <img src={One} alt="" />
             <p className="legend">Our Classic Still 1</p>
           </div>
-          <div>
+          <div className="galImg">
             <img src={Two} alt="" />
             <p className="legend">Our Classic Still 2</p>
           </div>
-          <div>
+          <div className="galImg">
             <img src={Three} alt="" />
             <p className="legend">Our Classic Still 3</p>
           </div>

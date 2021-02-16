@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addFeedback } from '../../actions/feedbackActions';
 import { clearErrors } from '../../actions/errorActions';
 
-const Feedback = ({addFeedback, error }) => {
+const Feedback = ({ addFeedback, error, props }) => {
     const [subject, setSubject] = useState('');
     const [description, setDescription] = useState('');
     const [msg, setMsg] = useState(null);
@@ -23,7 +23,6 @@ const Feedback = ({addFeedback, error }) => {
         addFeedback(feedback);
 
     };
-  
 
     useEffect(() => {
         // Check for register error
@@ -35,34 +34,36 @@ const Feedback = ({addFeedback, error }) => {
 
     }, [error]);
 
+    // if (isAuthenticated === true) {
+ 
+        return (
+    
+            <div className="su-bg">
+                <div className=" su-container cu-container"><h2>Feedback</h2>
+                    {msg ? <span style={{ color: "red" }}>{msg}</span> : null}
+                    <form onSubmit={handleOnSubmit}>
+                        <div className="singleItem">
+                            <label htmlFor="subject">Subject</label>
+                            <input type="text" name="subject" className="name" placeholder="Subject" onChange={handleChangeSubject}
+                            />
+                        </div>
 
-    return (
+                        <div className="textArea singleItem">
+                            <label htmlFor="description">Description</label>
+                            <textarea name="description" id="" cols="30" rows="5" placeholder="Type your message here .." onChange={handleChangeDescription}
+                            ></textarea>
+                        </div>
 
-        <div className="su-bg">
-            <div className=" su-container cu-container"><h2>Feedback</h2>
-            {msg ? <span style={{color:"red"}}>{msg}</span>: null}
-                <form onSubmit={handleOnSubmit}>
-                  <div className="singleItem">
-                        <label htmlFor="subject">Subject</label>
-                        <input type="text" name="subject" className="name" placeholder="Subject" onChange={handleChangeSubject}
-                        />
-                    </div>
-
-                    <div className="textArea singleItem">
-                         <label htmlFor="description">Description</label>
-                         <textarea name="description" id="" cols="30" rows="5" placeholder="Type your message here .." onChange={handleChangeDescription}
-                        ></textarea>
-                    </div>
-
-                    <div>
-                        <button className="btn btn-success btn-block" type="submit" >Submit</button>
-                    </div>
-                </form>
-            </div>
+                        <div>
+                            <button className="btn btn-success btn-block" type="submit" >Submit</button>
+                        </div>
+                    </form>
+                </div>
             
-        </div>
-    );
-}
+            </div>
+        );
+    }
+// }
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,

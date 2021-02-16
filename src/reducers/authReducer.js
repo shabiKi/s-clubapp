@@ -10,26 +10,18 @@ import {
     REGISTER_FAIL
   } from '../actions/types';
 
-// const isEmpty = require("is-empty");
-  
   const initialState = {
     token: localStorage.getItem('token'), // token which is comes from localstorage if there is one set 
     //isAuthenticated: null,
     isAuthenticated: localStorage.getItem('token') ? true:false,
     isLoading: false,
-    isLoggedIn: false,
+    isLoggedIn: localStorage.getItem('token') ? true:false,  
     isRegistered: false,
     user: null
   };
 
   export default function(state = initialState, action) {
     switch (action.type) {
-      // case SET_CURRENT_USER:
-      // return {
-      //   ...state,
-      //   isAuthenticated: !isEmpty(action.payload),
-      //   user: action.payload
-      // };
       case USER_LOADING:
         return {
           ...state,
@@ -46,14 +38,15 @@ import {
         localStorage.setItem('token', action.payload.token)
         return {
           ...state,
-          ...action.payload, // getting the token which is going to be included in the payload. action.payload going to have the user and token. 
+          ...action.payload, // getting the token which is going to be included in the payload. action.payload going to have the user and token.
+          // user: action.payload,
           isAuthenticated: true, //Remember that's what we are sending back from the backend and then is authenticated true and loading is false
           isLoading: false,
           isLoggedIn:true
         };
       case REGISTER_SUCCESS:
         localStorage.setItem('token', action.payload.token)
-        alert("Successfully Registered")
+        // alert("Successfully Registered")
         return {
           ...state,
           ...action.payload, // getting the token which is going to be included in the payload. action.payload going to have the user and token. 
@@ -71,7 +64,8 @@ import {
           token: null,
           user: null,
           isAuthenticated: false,
-          isLoading: false
+          isLoading: false,
+          isLoggedIn: false
         };
       default:
         return state;

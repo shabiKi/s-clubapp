@@ -21,13 +21,15 @@ class navbar extends Component {
     }
 
     render() {
-        const { isAuthenticated, user } = this.props.auth;
+        const { isLoggedIn, user } = this.props.auth;
 
         const authLinks = (
             <>
                 <div className="navbar_navigation-items">
-                    <NavLink to ="Auth/PlayerProfile"></NavLink>                  
-                    <Logout />
+                   {/* <NavLink to="Auth/PlayerProfile"></NavLink> */}
+                    {/* <li><NavLink to="/feedback">Feedback</NavLink></li>
+                    <li><NavLink to="/display">dFeedback</NavLink></li> */}
+                   <Logout />
                 </div>
 
             </>
@@ -54,8 +56,8 @@ class navbar extends Component {
                             <DrawerToggleButton click={this.props.drawerClickHandler} />
                         </div>
                         <div className="navbar_logo"><Link to="/"><img src={Logo} alt="logo"></img></Link></div>
-                        {
-                            user ? <div className="username">
+                        {isLoggedIn ?
+                           <div className="username">
                                 {`Welcome ${user.name}`} <Redirect to='/Auth/PlayerProfile/' />
                             </div> : ''
                         }
@@ -75,7 +77,7 @@ class navbar extends Component {
 
                         </div>
 
-                        {isAuthenticated ? authLinks : guestLinks}
+                        {isLoggedIn ? authLinks : guestLinks}
 
                     </nav>
 
